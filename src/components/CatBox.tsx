@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useCatStore } from "../stores/catStore";
 import { shallow } from "zustand/shallow";
-import { useTotalStore } from "../stores/total";
 
 export const CatBox = () => {
   const bigCats = useCatStore((state) => state.cats.bigCats);
