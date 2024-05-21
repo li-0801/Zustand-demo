@@ -1,7 +1,6 @@
 import { shallow } from "zustand/shallow";
 import { useCatStore } from "../stores/catStore";
 import { useEffect, useState } from "react";
-import { useTotalStore } from "../stores/total";
 
 export const CatController = () => {
   //   const { increaseBigCats, increaseSmallCats } = useCatStore();
@@ -28,8 +27,6 @@ useEffect(()=>{
       (bigCats, prevBigCats) => {
         console.log(bigCats, prevBigCats);
         if ( bigCats > 6) {
-          console.log('222222222');
-          
           setBgColor("teal");
         } else {
           setBgColor("gold"); 
@@ -40,24 +37,7 @@ useEffect(()=>{
         fireImmediately: true, // 订阅创建后立即执行一次 
       }
   );
-  const totalUnsub = useTotalStore.subscribe(
-    (state) => state.color,
-      (color) => {
-        console.log(color);
-        if ( color==='black') {
-          setBgColor("black");
-        } else {
-          console.log('111111111');
-           unsub()
-        }
-      },  
-      {
-        equalityFn: shallow,   //浅层比较
-        fireImmediately: true, // 订阅创建后立即执行一次 
-      }
-  )
     return () => {
-      totalUnsub();
       unsub();
     };
 },[]) 
