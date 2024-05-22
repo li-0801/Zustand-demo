@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useBearStore } from "../stores/bearStore";
 import { useCatStore } from "../stores/catStore";
 import { useFoodStore } from "../stores/foodStore";
@@ -8,8 +9,7 @@ export const TotalBox = () => {
     const bigCats = useCatStore((state) => state.cats.bigCats);
     const smallCats = useCatStore((state) => state.cats.smallCats);
     const fish = useFoodStore((state) => state.fish);
-    const bgColor = useTotalStore((state) => state.color);
- 
+    const [bgColor] = useState<string>(useTotalStore((state) => state.color));
 
       return (
         <div className="box" style={{backgroundColor:bgColor}}>
