@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { devtools, persist, subscribeWithSelector } from "zustand/middleware";
+import { createJSONStorage, devtools, persist, subscribeWithSelector } from "zustand/middleware";
 
 const initialFoodValue = {
   fish: 0,
@@ -10,7 +10,8 @@ export const useFoodStore = create<typeof initialFoodValue>()(
   devtools(
     subscribeWithSelector(
       persist(() => initialFoodValue, { 
-        name: "food store" ,
+        name: "food store" , // 缓存名称
+        storage: createJSONStorage(() => localStorage), //缓存方式
         partialize: (state) =>
           Object.fromEntries(
           Object.entries(state).filter(
@@ -19,7 +20,9 @@ export const useFoodStore = create<typeof initialFoodValue>()(
         )
       })
     ),
-    { name: "food store" } // 缓存名称
+    { 
+      name: "food store",
+    } 
   ),
   
 );

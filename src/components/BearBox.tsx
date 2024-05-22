@@ -39,7 +39,7 @@ export const BearBox = () => {
         fireImmediately: true, 
       }
     );
-    return unsub; 
+    return unsub; //通过调用 `unsub` 函数，取消对状态变化的订阅
   }, []); 
 
   return (

@@ -77,7 +77,7 @@ export const useCatStore = createSelectors(
             increaseBigCats: () =>
               set((state) => {
                 state.cats.bigCats++;
-              }),
+              }, false,'setBigCats'),
             increaseSmallCats: () => 
               set((state) => {
                 state.cats.smallCats++;

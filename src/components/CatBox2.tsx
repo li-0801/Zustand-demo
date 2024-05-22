@@ -48,7 +48,7 @@ useEffect(()=>{
     }
   );
   return () => {
-    bearUnsub();
+    bearUnsub(); //通过调用 `bearUnsub` ,`catUnsub`函数，取消对状态变化的订阅
     catUnsub();
   };
 },[])
